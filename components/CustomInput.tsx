@@ -19,7 +19,7 @@ const CustomInput = ({
       <TextInput
         autoCapitalize='none'
         autoCorrect={false}
-        value='value'
+        value={value}
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
