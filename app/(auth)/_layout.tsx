@@ -15,7 +15,13 @@ const _layout = () => {
           <Image source={images.logo} className='self-center size-48 absolute -bottom-16 z-10' />
         </View>
 
-        <CustomInput/>
+        <CustomInput
+          placeholder='Enter your email'
+          value={''}
+          onChangeText={(text) => {}}
+          label='Email'
+          keyboardType='email-address'
+        />
         <CustomButton/>
       </ScrollView>
     </KeyboardAvoidingView>
