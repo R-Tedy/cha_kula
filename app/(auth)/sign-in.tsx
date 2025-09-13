@@ -2,15 +2,27 @@ import { Alert, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import CustomInput from '@/components/CustomInput'
 import CustomButton from '@/components/CustomButton'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 
 const signIn = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({email: '', password=''});
 
   const submit = async () => {
-    if (!form.email || !form.password) Alert.alert('Error', 'Please enter a valid email and password.')
-  }
+    if (!form.email || !form.password) Alert.alert('Error', 'Please enter a valid email and password.');
+
+    setIsSubmitting(true);
+
+    try {
+      await signIn({email, password});
+
+      router.replace('/');
+    } catch (error: any) {
+      Alert.alert('Error', error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+    
   return (
     <View className='gap-10 bg-white rounded-lg mt-5'>
         <CustomInput
