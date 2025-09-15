@@ -6,7 +6,12 @@ export const appwriteConfig = {
   platform: "com.ted.chakula",
   projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!,
   databaseId: "68c724760000966352c7",
+  bucketId: "68c7eb9f0036e54c2888",
   userTableId: "user",
+  categoriesTableId: "categories",
+  menuTableId: "menu",
+  customizationsTableId: "castomizations",
+  menuCustomizationsTableId: "menu_customizations",
 }
 
 export const client = new Client();
