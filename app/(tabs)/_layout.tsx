@@ -15,10 +15,10 @@ const TabBarIcon = ({focused, icon, title}: TabBarIcon) => (
   </View>
 )
 
-const _layout = () => {
+const _Layout = () => {
   const isAuthenticated = true;
 
-  if(!isAuthenticated) return <Redirect href={"/(auth)/sign-in"} />
+  if(!isAuthenticated) return <Redirect href={"/sign-in"} />
   return (
     <Tabs
       screenOptions={{
@@ -75,4 +75,4 @@ const _layout = () => {
   )
 }
 
-export default _layout
+export default _Layout

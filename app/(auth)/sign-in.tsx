@@ -4,6 +4,7 @@ import CustomInput from '@/components/CustomInput'
 import CustomButton from '@/components/CustomButton'
 import { Link, router } from 'expo-router'
 import { signIn } from '@/lib/appwrite'
+import * as Sentry from '@sentry/react-native'
 
 const SignIn = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,13 +23,14 @@ const SignIn = () => {
       router.replace('/');
     } catch (error: any) {
       Alert.alert('Error', error.message);
+      Sentry.captureEvent(error);
     } finally {
       setIsSubmitting(false);
     }
   }
 
   return (
-    <View className='gap-10 bg-white rounded-lg mt-5'>
+    <View className='gap-10 bg-white p-5 rounded-lg mt-5'>
         <CustomInput
           placeholder='Enter your email'
           value={form.email}
