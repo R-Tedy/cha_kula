@@ -2,8 +2,10 @@ import { Redirect, Slot, Tabs } from 'expo-router'
 import { Image, Text, View } from 'react-native';
 import cn from "clsx";
 import { images } from '@/constants';
+import useAuthStore from '@/store/auth.store';
+import { TabBarIconProps } from '@/type';
 
-const TabBarIcon = ({focused, icon, title}: TabBarIcon) => (
+const TabBarIcon = ({focused, icon, title}: TabBarIconProps) => (
   <View className='tab-icon'>
     <Image source={icon} className='size-7' resizeMode='contain' tintColor={focused ? '#fe8c00' : '#5d5f6d'} />
     <Text className={cn(
@@ -15,8 +17,8 @@ const TabBarIcon = ({focused, icon, title}: TabBarIcon) => (
   </View>
 )
 
-const _Layout = () => {
-  const isAuthenticated = true;
+const TabLayout = () => {
+  const {isAuthenticated} = useAuthStore();
 
   if(!isAuthenticated) return <Redirect href={"/sign-in"} />
   return (
@@ -75,4 +77,4 @@ const _Layout = () => {
   )
 }
 
-export default _Layout
+export default TabLayout
